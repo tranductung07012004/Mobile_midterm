@@ -23,12 +23,14 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.google.android.material.button.MaterialButton
+import com.otaliastudios.zoom.ZoomLayout
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
 
 class PhotoDetailActivity : AppCompatActivity() {
 
+    private lateinit var zoomLayout: ZoomLayout
     private lateinit var imageView: ImageView
     private lateinit var backButton: MaterialButton
     private lateinit var saveButton: MaterialButton
@@ -53,6 +55,7 @@ class PhotoDetailActivity : AppCompatActivity() {
         photoUrl = intent.getStringExtra("photoUrl")
         photoId = intent.getStringExtra("photoId")
 
+        zoomLayout = findViewById(R.id.zoomLayout)
         imageView = findViewById(R.id.detailImageView)
         backButton = findViewById(R.id.backButton)
         saveButton = findViewById(R.id.saveButton)
@@ -62,12 +65,25 @@ class PhotoDetailActivity : AppCompatActivity() {
         buttonPanel = findViewById(R.id.buttonPanel)
         exitFullScreenButton = findViewById(R.id.exitFullscreenButton)
 
+
+        zoomLayout.setZoomEnabled(false)
+        zoomLayout.setVerticalPanEnabled(false)
+        zoomLayout.setHorizontalPanEnabled(false)
+
         Glide.with(this)
             .load(photoUrl)
             .placeholder(R.drawable.place_holder)
             .error(R.drawable.error_place_holder)
             .thumbnail(0.1f)
-            .into(imageView)
+            .into(object : CustomTarget<Drawable>() {
+                override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
+                    zoomLayout.post {
+                        imageView.setImageDrawable(resource)
+                        zoomLayout.zoomTo(1.0f, true)
+                    }
+                }
+                override fun onLoadCleared(placeholder: Drawable?) {}
+            })
 
         setupButtons()
     }
@@ -98,13 +114,18 @@ class PhotoDetailActivity : AppCompatActivity() {
         isFullscreen = !isFullscreen
 
         if (isFullscreen) {
+            zoomLayout.setZoomEnabled(true)
+            zoomLayout.setVerticalPanEnabled(true)
+            zoomLayout.setHorizontalPanEnabled(true)
             buttonPanel.visibility = View.GONE
             exitFullScreenButton.visibility = View.VISIBLE
-            imageView.scaleType = ImageView.ScaleType.CENTER_CROP
         } else {
+            zoomLayout.zoomTo(1.0f, true)
+            zoomLayout.setZoomEnabled(false)
+            zoomLayout.setVerticalPanEnabled(false)
+            zoomLayout.setHorizontalPanEnabled(false)
             buttonPanel.visibility = View.VISIBLE
             exitFullScreenButton.visibility = View.GONE
-            imageView.scaleType = ImageView.ScaleType.FIT_CENTER
         }
     }
 

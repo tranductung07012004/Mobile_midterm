@@ -7,18 +7,19 @@
     android:background="@android:color/black"
     tools:context=".PhotoDetailActivity">
 
-    <ImageView
-        android:id="@+id/detailImageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:contentDescription="@string/string2"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+
+    <com.otaliastudios.zoom.ZoomLayout
+        android:id="@+id/zoomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/detailImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/string2"
+            android:scaleType="fitCenter" />
+    </com.otaliastudios.zoom.ZoomLayout>
 
     <LinearLayout
         android:id="@+id/buttonPanel"
@@ -101,7 +102,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/wallpaper"
         style="@style/Widget.MaterialComponents.Button.Icon"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="296dp"
         android:layout_marginTop="36dp"
@@ -110,7 +111,8 @@
         app:icon="@drawable/wallpaper"
         app:iconGravity="textStart"
         app:iconTint="#0b0c0d"
-        app:layout_constraintStart_toStartOf="@+id/detailImageView"
-        app:layout_constraintTop_toTopOf="@+id/detailImageView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

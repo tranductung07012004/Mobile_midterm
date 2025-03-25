@@ -74,4 +74,7 @@ dependencies {
 
     // SwipeRefreshLayout for pull-to-refresh
     implementation (libs.androidx.swiperefreshlayout)
+
+    implementation(libs.zoomlayout)
+
 }
