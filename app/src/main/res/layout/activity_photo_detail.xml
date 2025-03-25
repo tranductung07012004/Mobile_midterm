@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".PhotoDetailActivity">
+
+    <ImageView
+        android:id="@+id/detailImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/string2"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <LinearLayout
+        android:id="@+id/buttonPanel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#80000000"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/backButton"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            app:backgroundTint="#f2f4f7"
+            app:icon="@drawable/back"
+            app:iconGravity="textStart"
+            app:iconTint="#0b0c0d" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveButton"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            app:backgroundTint="#f2f4f7"
+            app:icon="@drawable/save"
+            app:iconGravity="textStart"
+            app:iconTint="#0b0c0d" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/shareButton"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            app:backgroundTint="#f2f4f7"
+            app:icon="@drawable/share"
+            app:iconGravity="textStart"
+            app:iconTint="#0b0c0d" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/fullscreenButton"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:backgroundTint="#f2f4f7"
+            app:icon="@drawable/full_screen"
+            app:iconGravity="textStart"
+            app:iconTint="#0b0c0d" />
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/exitFullscreenButton"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="89dp"
+        android:layout_height="44dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        app:backgroundTint="#f2f4f7"
+        app:icon="@drawable/exit_full_screen"
+        app:iconGravity="textStart"
+        app:iconTint="#0b0c0d"
+        app:layout_constraintBottom_toTopOf="@+id/buttonPanel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.949"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.99" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/wallpaper"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="296dp"
+        android:layout_marginTop="36dp"
+        android:layout_weight="1"
+        app:backgroundTint="#f2f4f7"
+        app:icon="@drawable/wallpaper"
+        app:iconGravity="textStart"
+        app:iconTint="#0b0c0d"
+        app:layout_constraintStart_toStartOf="@+id/detailImageView"
+        app:layout_constraintTop_toTopOf="@+id/detailImageView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
